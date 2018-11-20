@@ -8,6 +8,7 @@ export default class DialogTitle extends React.PureComponent {
 	static propTypes = {
 		...Text.propTypes,
 		style: PropTypes.any,
+		container: PropTypes.any,
 		children: PropTypes.string.isRequired,
 		closebutton: PropTypes.shape({
 			show: PropTypes.bool.isRequired,
@@ -25,15 +26,15 @@ export default class DialogTitle extends React.PureComponent {
 	static displayName = 'DialogTitle';
 
 	render() {
-		const { style, closebutton, children, ...otherProps } = this.props;
+		const { style, closebutton, container, children, ...otherProps } = this.props;
 		return (
-			<View style={styles.container}>
+			<View style={[ styles.container, container ]}>
 				<Text style={[ styles.text, style ]} {...otherProps}>
 					{children}
 				</Text>
 				{closebutton.show ? (
 					<TouchableOpacity onPress={closebutton.clickhandler}>
-						<Image source={closeIcon} />
+						<Image style={styles.icon} resizeMode="contain" source={closeIcon} />
 					</TouchableOpacity>
 				) : null}
 			</View>
@@ -51,9 +52,7 @@ const styles = StyleSheet.create({
 			marginRight: 0,
 			paddingLeft: 18,
 			paddingRight: 18,
-			paddingBottom: 11,
-			borderBottomColor: '#A9ADAE',
-			borderBottomWidth: StyleSheet.hairlineWidth
+			paddingBottom: 11
 		},
 		android: {
 			flexDirection: 'row',
@@ -75,5 +74,9 @@ const styles = StyleSheet.create({
 			fontWeight: '500',
 			fontSize: 18
 		}
-	})
+	}),
+	icon: {
+		width: 10,
+		height: 10
+	}
 });

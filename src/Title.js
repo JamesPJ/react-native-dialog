@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
 		ios: {
 			flexDirection: 'row',
 			justifyContent: 'space-between',
-			alignItems: 'baseline',
+			alignItems: 'center',
 			marginLeft: 0,
 			marginRight: 0,
 			paddingLeft: 18,
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
 		android: {
 			flexDirection: 'row',
 			justifyContent: 'space-between',
-			alignItems: 'baseline',
+			alignItems: 'center',
 			marginLeft: 0,
 			marginRight: 0,
 			padding: 0

@@ -71,12 +71,14 @@ const styles = StyleSheet.create({
 			fontWeight: '600'
 		},
 		android: {
+			color: 'black',
 			fontWeight: '500',
 			fontSize: 18
 		}
 	}),
 	icon: {
-		width: 10,
-		height: 10
+		width: 12,
+		height: 12
 	}
 });
+

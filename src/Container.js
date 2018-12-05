@@ -48,7 +48,7 @@ export default class DialogContainer extends React.PureComponent {
 			} else if (child.type.name === 'DialogDescription' || child.type.displayName === 'DialogDescription') {
 				descriptionChildrens.push(child);
 			} else if (child.type.name === 'DialogButton' || child.type.displayName === 'DialogButton') {
-				if (Platform.OS === 'ios' && buttonChildrens.length > 0) {
+				if (buttonChildrens.length > 0) {
 					buttonChildrens.push(<View style={[ styles.buttonSeparator, buttonSeparatorStyle ]} />);
 				}
 				buttonChildrens.push(child);
@@ -67,8 +67,7 @@ export default class DialogContainer extends React.PureComponent {
 			>
 				<KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.container}>
 					<View style={[ styles.content, contentStyle ]}>
-						{Platform.OS === 'ios' && blurComponentIOS}
-						{Platform.OS === 'ios' && !blurComponentIOS && <View style={styles.blur} />}
+						<View style={styles.blur} />
 						<View style={[ styles.header, headerStyle ]}>
 							{titleChildrens}
 							{descriptionChildrens}
@@ -111,25 +110,12 @@ const styles = StyleSheet.create({
 		bottom: 0,
 		right: 0
 	},
-	content: Platform.select({
-		ios: {
-			width: '80%',
-			flexDirection: 'column',
-			borderRadius: 13,
-			overflow: 'hidden'
-		},
-		android: {
-			flexDirection: 'column',
-			borderRadius: 3,
-			padding: 16,
-			margin: 16,
-			backgroundColor: 'white',
-			overflow: 'hidden',
-			elevation: 4,
-			minWidth: 300,
-			width: '80%'
-		}
-	}),
+	content: {
+		width: '80%',
+		flexDirection: 'column',
+		borderRadius: 13,
+		overflow: 'hidden'
+	},
 	header: Platform.select({
 		ios: {
 			margin: 18
@@ -138,24 +124,17 @@ const styles = StyleSheet.create({
 			margin: 12
 		}
 	}),
-	footer: Platform.select({
-		ios: {
-			flexDirection: 'row',
-			justifyContent: 'space-between',
-			borderTopColor: '#A9ADAE',
-			borderTopWidth: StyleSheet.hairlineWidth,
-			height: 46
-		},
-		android: {
-			flexDirection: 'row',
-			alignItems: 'center',
-			justifyContent: 'flex-end',
-			marginTop: 4
-		}
-	}),
+	footer: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		borderTopColor: '#A9ADAE',
+		borderTopWidth: StyleSheet.hairlineWidth,
+		height: 46
+	},
 	buttonSeparator: {
 		height: '100%',
 		backgroundColor: '#A9ADAE',
 		width: StyleSheet.hairlineWidth
 	}
 });
+

@@ -33,7 +33,7 @@ export default class DialogTitle extends React.PureComponent {
 					{children}
 				</Text>
 				{closebutton.show ? (
-					<TouchableOpacity onPress={closebutton.clickhandler}>
+					<TouchableOpacity style={{ padding: '2%', paddingLeft: '7%' }} onPress={closebutton.clickhandler}>
 						<Image style={styles.icon} resizeMode="contain" source={closeIcon} />
 					</TouchableOpacity>
 				) : null}
